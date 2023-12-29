@@ -5,7 +5,6 @@
 import pandas as pd
 import ipaddress
 
-
 def is_private_ip(ip):
     try:
         return ipaddress.ip_address(ip).is_private
@@ -14,11 +13,14 @@ def is_private_ip(ip):
         return False
 
 
-def extract_and_filter_ips(input_csv, output_csv):
+def extract_and_filter_ips(*input_files, output_csv):
     # Read the CSV file into a pandas DataFrame
-    df = pd.read_csv(input_csv)
+
+    df_list = [pd.read_csv(file) for file in input_files]
+    df = pd.concat(df_list)
 
     # Extract unique IP addresses from the "Source" and "Destination" columns
+
     unique_ips = pd.concat([df['Source'], df['Destination']]).unique()
 
     # Filter out private IP addresses
@@ -30,4 +32,6 @@ def extract_and_filter_ips(input_csv, output_csv):
     # Write the result DataFrame to a new CSV file
     result_df.to_csv(output_csv, index=False)
 
-    print(f"Unique non-private IP addresses extracted from {input_csv} and saved to {output_csv}.")
+    print(f'There are {len(filtered_ips)} unique IPs')
+    print(f"Unique non-private IP addresses extracted from {input_files} and saved to {output_csv}.")
+
