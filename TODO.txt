@@ -6,3 +6,4 @@ add capability to accept and two pcaps at once.
     make this step optional in the program.
 Review mergeSheets.py
     adding the virus total results to sheet two may be unnecessary.
+Update mergeSheets to take n inputs for csv files.
