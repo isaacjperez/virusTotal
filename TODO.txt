@@ -1,0 +1,7 @@
+add capability to accept and two pcaps at once.
+    extract only the unique and non-private IPs from both and combine them into a single list.
+    apply the virus total results to both list.
+    maybe make it take up to n files instead of one or two.
+    make this step optional in the program.
+Review mergeSheets.py
+    adding the virus total results to sheet two may be unnecessary.
