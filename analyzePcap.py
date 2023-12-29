@@ -24,8 +24,12 @@ def analyze_pcap_data(merged_file, output_file):
     # Fill missing values in 'Last Analysis Date' with a default value (e.g., 'Unknown')
     # If there is no last analysis date, those rows will be dropped, so it is assigned 'Unknown'.
     df_sheet1['Last Analysis Date'] = df_sheet1['Last Analysis Date'].fillna('Unknown')
+    # If there is no Src port or Dst port the row will be dropped so give it a default value.
+    df_sheet1['Src port'] = df_sheet1['Src port'].fillna("Unknown")
+    df_sheet1['Dst port'] = df_sheet1['Dst port'].fillna('Unknown')
 
-    # Filter rows with private IP addresses in either 'Source' or 'Destination'
+    # accounting for connections where either the source or destination IP is not private,
+    # which includes private to external, external to private connections and external to external connections.
     private_ip_connections = df_sheet1[
         (~df_sheet1['Source'].apply(is_private)) |
         (~df_sheet1['Destination'].apply(is_private))
