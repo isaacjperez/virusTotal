@@ -12,11 +12,14 @@ from analyzePcap import analyze_pcap_data
 # https://unit42.paloaltonetworks.com/unit42-customizing-wireshark-changing-column-display/
 
 # path to pcap as a csv
-csv_pcap = ''
+csv_pcap1 = ''
 
 # STEP 2) remove duplicates and private IP addresses so that they can be run through virus total.
 
 # input is the pcap csv step 1.
+# function can take n inputs
+# extract_and_filter_ips(csv_pcap1, csv_pcap2, output_csv=unique_non_private_IP_addresses)
+
 # output file path for removeDuplicates
 # must be csv
 unique_non_private_IP_addresses = ''
@@ -53,9 +56,9 @@ analysis_output_path = ''
 
 
 def main():
-    extract_and_filter_ips(csv_pcap, unique_non_private_IP_addresses)
+    extract_and_filter_ips(csv_pcap1, output_csv=unique_non_private_IP_addresses)
     get_verdict(unique_non_private_IP_addresses, virus_total_results)
-    merge_and_update(csv_pcap, virus_total_results, merged_file)
+    merge_and_update(csv_pcap1, virus_total_results, merged_file)  # need to update to take n pcaps
     analyze_pcap_data(merged_file, analysis_output_path)
 
 
