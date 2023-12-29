@@ -40,7 +40,8 @@ virus_total_results = ""
 
 # path to output of merge_and_update
 # must be .xlsx file
-merged_file = ''
+merged_file1 = ''
+merged_file2 = ''
 
 # STEP 5) analyze pcap
 # input is the merged file from step 4.
@@ -52,14 +53,20 @@ merged_file = ''
 
 # output path for analyze_pcap_data
 # can be csv or xlsx
-analysis_output_path = ''
+analysis_output_path1 = ''
+analysis_output_path2 = ''
 
 
 def main():
     extract_and_filter_ips(csv_pcap1, output_csv=unique_non_private_IP_addresses)
     get_verdict(unique_non_private_IP_addresses, virus_total_results)
-    merge_and_update(csv_pcap1, virus_total_results, merged_file)  # need to update to take n pcaps
-    analyze_pcap_data(merged_file, analysis_output_path)
+
+    merge_and_update(csv_pcap1, virus_total_results, merged_file1)  # need to update to take n pcaps
+    analyze_pcap_data(merged_file1, analysis_output_path1)
+
+    # for now make multiple function calls for multiple pcaps
+    # merge_and_update(csv_pcap2, virus_total_results, merged_file2)  # need to update to take n pcaps
+    # analyze_pcap_data(merged_file2, analysis_output_path2)
 
 
 if __name__ == "__main__":
