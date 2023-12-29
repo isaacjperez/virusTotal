@@ -1,4 +1,4 @@
-This script utilizes the Virus Total community API to provide a Virus Total verdict. 
+This script utilizes the Virus Total community API to provide a Virus Total verdict for IP addresses. 
 Its main goal is to analyze and summarize pcaps. 
 Read main.py for a more detailed description of the script and its functions. 
 
