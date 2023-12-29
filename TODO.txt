@@ -1,3 +1,4 @@
+add a way to check how many IPs I am going to run before I run them. The Virus Total API key only allows 500 request per day.
 add capability to accept and two pcaps at once.
     extract only the unique and non-private IPs from both and combine them into a single list.
     apply the virus total results to both list.
