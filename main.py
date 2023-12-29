@@ -23,6 +23,7 @@ unique_non_private_IP_addresses = ''
 
 # STEP 3) get virus total info
 # input is the output of removeDuplicates step 2.
+# make sure API key is in the config file or adjust getVirusTotalVerdict code and add the key directly.
 
 # output path for virus total results
 # must be csv
